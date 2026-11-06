@@ -1,0 +1,46 @@
+[project]
+name = "subtitle-mcp"
+version = "0.1.0"
+description = "MCP server for everyday subtitle work: inspect, search, shift, resync, convert, repair and translate-in-chunks SRT, WebVTT and ASS files. Offline, no dependencies beyond mcp."
+readme = "README.md"
+license = { text = "MIT" }
+authors = [{ name = "0xmortuex" }]
+requires-python = ">=3.10"
+dependencies = [
+    "mcp>=2.0.0",
+]
+keywords = ["mcp", "subtitles", "srt", "webvtt", "ass", "resync", "translation", "ai-agent"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: End Users/Desktop",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Multimedia :: Video",
+    "Topic :: Text Processing",
+]
+
+[project.optional-dependencies]
+test = ["pytest>=7", "anyio"]
+
+[project.urls]
+Homepage = "https://github.com/0xmortuex/subtitle-mcp"
+
+[project.scripts]
+subtitle-mcp = "subtitle_mcp.server:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/subtitle_mcp"]
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
